@@ -6,7 +6,7 @@ class DioHelper {
 
   static init() {
     String baseUrl = 'https://www.bazoka.eraasoft.com/api/';
-    String loginUrl = 'https://localhost:44331/Login/';
+    String loginUrl = 'https://apisstmobiletestauthorization.sstegweb.com/Login/';
 
 
     dio = Dio(BaseOptions(
@@ -81,10 +81,11 @@ class DioHelper {
   static Future<Response> loginData({
     required String url,
     Map<String, dynamic>? query,
-    String? token,
+    // String? token,
   }) async {
     dioLogin.options.headers = {
       'Content-Type': 'application/json',
+
     };
     return await dioLogin.get(url, queryParameters: query);
   }

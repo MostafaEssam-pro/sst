@@ -44,3 +44,13 @@ String? isValidatePhone(String? value) {
     return null;
   }
 }
+
+String? validate(String? value) {
+
+
+  if (value == null || value.isEmpty ) {
+    return 'Enter a valid Email Address';
+  } else {
+    return null;
+  }
+}

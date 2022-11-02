@@ -15,13 +15,13 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
   LoginModel? loginModel;
 
-  userLogin(String email, String password) {
-
+  userLogin(String userName, String password) {
+    print(password);
     emit(LoginGetLoadingState());
 
     DioHelper.loginData(
         url: 'Login',
-        query: {'email': email, 'password': password}).then((value) async {
+        query: {'userName': userName, 'password': password}).then((value) async {
       print(value.data);
       var jsondata = jsonDecode(value.data);
       loginModel = LoginModel.fromJson(jsondata);

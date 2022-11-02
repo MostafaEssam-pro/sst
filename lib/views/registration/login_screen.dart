@@ -23,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var _PasswordInput = TextEditingController();
-  var _EamilInput = TextEditingController();
+  var _userNameInput = TextEditingController();
   var formSinupKey = GlobalKey<FormState>();
 
   bool _isObscure = true;
@@ -73,17 +73,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           TextFieldCustom(
                               text: 'Your Email',
-                              InputType: TextInputType.emailAddress,
-                              validatorField: (value) => validateEmail(value),
-                              icon: Icons.email,
-                              NameController: _EamilInput),
+                              InputType: TextInputType.text,
+                              validatorField: (value) => validate(value),
+                              icon: Icons.person,
+                              NameController: _userNameInput),
 
                           TextFieldCustom(
                             text: 'Your Password',
                             icon: Icons.lock,
                             NameController: _PasswordInput,
                             validatorField: (value) =>
-                                isValidatePassword(value),
+                                validate(value),
                             InputType: TextInputType.text,
                             obscureText: _isObscure,
                             suffixIconRight: IconButton(
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .validate())
                                     {
                                       cubit.userLogin(
-                                          _EamilInput.text.trim(),
+                                          _userNameInput.text.trim(),
                                           _PasswordInput.text.trim())
                                     }
                                 }),
