@@ -16,21 +16,20 @@ class LoginCubit extends Cubit<LoginState> {
   LoginModel? loginModel;
 
   userLogin(String userName, String password) {
-    print(password);
+
     emit(LoginGetLoadingState());
 
     DioHelper.loginData(
         url: 'Login',
         query: {'userName': userName, 'password': password}).then((value) async {
       print(value.data);
-      var jsondata = jsonDecode(value.data);
-      loginModel = LoginModel.fromJson(jsondata);
+      var jsonData = jsonDecode(value.data);
+      print(jsonData);
+      loginModel = LoginModel.fromJson(jsonData);
 
-    SharedPreferencesHelper.saveData(key: 'token', value: loginModel?.token);
-      SharedPreferencesHelper.saveData(key: 'lang', value: loginModel?.lang);
-      SharedPreferencesHelper.saveData(key: 'UserCode', value: loginModel?.userCode);
-
-
+    SharedPreferencesHelper.saveData(key: 'token', value: loginModel!.token);
+      SharedPreferencesHelper.saveData(key: 'lang', value: loginModel!.lang);
+      SharedPreferencesHelper.saveData(key: 'UserCode', value: loginModel!.userCode);
       emit(LoginGetSuccessState(loginModel!));
     }).catchError((error) {
       print(error.toString());

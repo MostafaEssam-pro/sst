@@ -28,15 +28,7 @@ class DioHelper {
         connectTimeout: 5000000,
         receiveTimeout: 5000000,
         responseType: ResponseType.plain,
-        headers: {
-          // ignore: unnecessary_string_escapes
-          'dbserver':'47.91.90.208\SQLSTANDARD2019,1433',
-          'dbname':'SSTERPSolutionMobile',
-          'ClientCode':20002,
-          'BranchId':7,
-          'Culture':'ar',
-
-        })
+        )
     );
 
   }
@@ -85,8 +77,15 @@ class DioHelper {
   }) async {
     dioLogin.options.headers = {
       'Content-Type': 'application/json',
+      'dbserver':'47.91.90.208\\SQLSTANDARD2019,1433',
+      'dbname':'SSTERPSolutionMobile',
+      'ClientCode':20002,
+      'BranchId':7,
+      'Culture':'ar',
 
     };
+    print(url);
+    print(query);
     return await dioLogin.get(url, queryParameters: query);
   }
 }
