@@ -1,13 +1,13 @@
-class VehicleRequestModel {
-  VehicleRequestModel({
+class VehicleRequestHup {
+  VehicleRequestHup({
     required this.items,
     required this.count,
   });
-  late final List<Items> items;
+  late final List<ItemsVehicleRequest> items;
   late final int count;
 
-  VehicleRequestModel.fromJson(Map<String, dynamic> json){
-    items = List.from(json['items']).map((e)=>Items.fromJson(e)).toList();
+  VehicleRequestHup.fromJson(Map<String, dynamic> json){
+    items = List.from(json['items']).map((e)=>ItemsVehicleRequest.fromJson(e)).toList();
     count = json['count'];
   }
 
@@ -19,10 +19,10 @@ class VehicleRequestModel {
   }
 }
 
-class Items {
-  Items({
+class ItemsVehicleRequest {
+  ItemsVehicleRequest({
     required this.masterRequestCode,
-    this.masterRequestNo,
+    required this.masterRequestNo,
     required this.requestTypeCode,
     required this.trackCode,
     required this.requestDate,
@@ -111,9 +111,9 @@ class Items {
   late final int createdBy;
   late final String creationDate;
   late final String creationDateHijri;
-  late final int? modifiedBy;
-  late final String? modificationDate;
-  late final String? modificationDateHijri;
+  late final Null modifiedBy;
+  late final Null modificationDate;
+  late final Null modificationDateHijri;
   late final int employeeCode;
   late final Null fileName;
   late final Null filebase64;
@@ -127,9 +127,9 @@ class Items {
   late final Null userPendingName;
   late final Null createdByUser;
   late final bool trackCanceledExist;
-  late final CreatedByNavigation? createdByNavigation;
+  late final Null createdByNavigation;
   late final EmployeeCodeNavigation employeeCodeNavigation;
-  late final ModifiedByNavigation? modifiedByNavigation;
+  late final Null modifiedByNavigation;
   late final Null requestTypeCodeNavigation;
   late final Null trackCodeNavigation;
   late final WfRequestStatus wfRequestStatus;
@@ -173,16 +173,16 @@ class Items {
   late final Null subContractGroupCode;
   late final Null assignmentCode;
 
-  Items.fromJson(Map<String, dynamic> json){
+  ItemsVehicleRequest.fromJson(Map<String, dynamic> json){
     masterRequestCode = json['masterRequestCode'];
-    masterRequestNo = null;
+    masterRequestNo = json['masterRequestNo'];
     requestTypeCode = json['requestTypeCode'];
     trackCode = json['trackCode'];
     requestDate = json['requestDate'];
     requestDateHijri = json['requestDateHijri'];
     mainType = json['mainType'];
     departmentApproval = json['departmentApproval'];
-    notes = null;
+    notes = json['notes'];
     canceled = null;
     cancelRequestNumber = null;
     createdBy = json['createdBy'];
@@ -332,109 +332,12 @@ class Items {
   }
 }
 
-class CreatedByNavigation {
-  CreatedByNavigation({
-    required this.securityUserCode,
-    required this.securityGroupCode,
-    required this.userName,
-    required this.password,
-    required this.isActive,
-    required this.isAdmin,
-    required this.lang,
-    required this.skin,
-    required this.name,
-    required this.arabicName,
-    required this.isEditable,
-    this.email,
-    required this.recieveEmailNotifications,
-    required this.employeeCode,
-    this.userTypeCode,
-    this.defaultMenuCode,
-    this.maxStorageSize,
-    required this.securityLevel,
-    required this.isFirstLogin,
-    required this.employeeCodeNavigation,
-    this.userTypeCodeNavigation,
-  });
-  late final int securityUserCode;
-  late final int securityGroupCode;
-  late final String userName;
-  late final String password;
-  late final bool isActive;
-  late final bool isAdmin;
-  late final String lang;
-  late final String skin;
-  late final String name;
-  late final String arabicName;
-  late final bool isEditable;
-  late final Null email;
-  late final bool recieveEmailNotifications;
-  late final int employeeCode;
-  late final Null userTypeCode;
-  late final Null defaultMenuCode;
-  late final Null maxStorageSize;
-  late final int securityLevel;
-  late final bool isFirstLogin;
-  late final EmployeeCodeNavigation employeeCodeNavigation;
-  late final Null userTypeCodeNavigation;
-
-  CreatedByNavigation.fromJson(Map<String, dynamic> json){
-    securityUserCode = json['securityUserCode'];
-    securityGroupCode = json['securityGroupCode'];
-    userName = json['userName'];
-    password = json['password'];
-    isActive = json['isActive'];
-    isAdmin = json['isAdmin'];
-    lang = json['lang'];
-    skin = json['skin'];
-    name = json['name'];
-    arabicName = json['arabic_Name'];
-    isEditable = json['isEditable'];
-    email = null;
-    recieveEmailNotifications = json['recieveEmailNotifications'];
-    employeeCode = json['employeeCode'];
-    userTypeCode = null;
-    defaultMenuCode = null;
-    maxStorageSize = null;
-    securityLevel = json['securityLevel'];
-    isFirstLogin = json['isFirstLogin'];
-    employeeCodeNavigation = EmployeeCodeNavigation.fromJson(json['employeeCodeNavigation']);
-    userTypeCodeNavigation = null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['securityUserCode'] = securityUserCode;
-    _data['securityGroupCode'] = securityGroupCode;
-    _data['userName'] = userName;
-    _data['password'] = password;
-    _data['isActive'] = isActive;
-    _data['isAdmin'] = isAdmin;
-    _data['lang'] = lang;
-    _data['skin'] = skin;
-    _data['name'] = name;
-    _data['arabic_Name'] = arabicName;
-    _data['isEditable'] = isEditable;
-    _data['email'] = email;
-    _data['recieveEmailNotifications'] = recieveEmailNotifications;
-    _data['employeeCode'] = employeeCode;
-    _data['userTypeCode'] = userTypeCode;
-    _data['defaultMenuCode'] = defaultMenuCode;
-    _data['maxStorageSize'] = maxStorageSize;
-    _data['securityLevel'] = securityLevel;
-    _data['isFirstLogin'] = isFirstLogin;
-    _data['employeeCodeNavigation'] = employeeCodeNavigation.toJson();
-    _data['userTypeCodeNavigation'] = userTypeCodeNavigation;
-    return _data;
-  }
-}
-
 class EmployeeCodeNavigation {
   EmployeeCodeNavigation({
     required this.employeeCode,
     required this.name,
     required this.arabicName,
-    this.eMail,
+    required this.eMail,
     required this.userId,
     required this.levelCode,
     this.englishName,
@@ -461,7 +364,7 @@ class EmployeeCodeNavigation {
     this.userName,
     required this.hiringDate,
     required this.resignationDate,
-    this.hiringDateHijri,
+    required this.hiringDateHijri,
     required this.positionCode,
     required this.divisionCode,
     required this.departmentCode,
@@ -488,8 +391,8 @@ class EmployeeCodeNavigation {
     this.org9Code,
     this.extensionNumber,
     required this.maritalCode,
-    this.mobile,
-    this.engFullAddress,
+    required this.mobile,
+    required this.engFullAddress,
     required this.arabicFullAddress,
     this.bankAccountNumber,
     this.residenceExpireDateHijiri,
@@ -500,7 +403,7 @@ class EmployeeCodeNavigation {
   late final int employeeCode;
   late final String name;
   late final String arabicName;
-  late final Null eMail;
+  late final String eMail;
   late final int userId;
   late final int levelCode;
   late final Null englishName;
@@ -527,7 +430,7 @@ class EmployeeCodeNavigation {
   late final Null userName;
   late final String hiringDate;
   late final String resignationDate;
-  late final Null hiringDateHijri;
+  late final String hiringDateHijri;
   late final String positionCode;
   late final String divisionCode;
   late final String departmentCode;
@@ -540,7 +443,7 @@ class EmployeeCodeNavigation {
   late final bool sex;
   late final String contractExpireDate;
   late final bool isSelected;
-  late final int totalSalary;
+  late final double totalSalary;
   late final bool outofattendanceMachine;
   late final int active;
   late final Null userImage;
@@ -554,8 +457,8 @@ class EmployeeCodeNavigation {
   late final Null org9Code;
   late final Null extensionNumber;
   late final int maritalCode;
-  late final Null mobile;
-  late final Null engFullAddress;
+  late final String mobile;
+  late final String engFullAddress;
   late final String arabicFullAddress;
   late final Null bankAccountNumber;
   late final Null residenceExpireDateHijiri;
@@ -567,7 +470,7 @@ class EmployeeCodeNavigation {
     employeeCode = json['employeeCode'];
     name = json['name'];
     arabicName = json['arabic_Name'];
-    eMail = null;
+    eMail = json['eMail'].toString();
     userId = json['userId'];
     levelCode = json['levelCode'];
     englishName = null;
@@ -594,7 +497,7 @@ class EmployeeCodeNavigation {
     userName = null;
     hiringDate = json['hiringDate'];
     resignationDate = json['resignationDate'];
-    hiringDateHijri = null;
+    hiringDateHijri = json['hiringDateHijri'].toString();
     positionCode = json['positionCode'];
     divisionCode = json['divisionCode'];
     departmentCode = json['departmentCode'];
@@ -621,9 +524,9 @@ class EmployeeCodeNavigation {
     org9Code = null;
     extensionNumber = null;
     maritalCode = json['maritalCode'];
-    mobile = null;
-    engFullAddress = null;
-    arabicFullAddress = json['arabicFullAddress'];
+    mobile = json['mobile'].toString();
+    engFullAddress = json['engFullAddress'].toString();
+    arabicFullAddress = json['arabicFullAddress'].toString();
     bankAccountNumber = null;
     residenceExpireDateHijiri = null;
     residenceExpireDate = null;
@@ -698,103 +601,6 @@ class EmployeeCodeNavigation {
     _data['residenceExpireDate'] = residenceExpireDate;
     _data['residenceNumber'] = residenceNumber;
     _data['nationalityCode'] = nationalityCode;
-    return _data;
-  }
-}
-
-class ModifiedByNavigation {
-  ModifiedByNavigation({
-    required this.securityUserCode,
-    required this.securityGroupCode,
-    required this.userName,
-    required this.password,
-    required this.isActive,
-    required this.isAdmin,
-    required this.lang,
-    required this.skin,
-    required this.name,
-    required this.arabicName,
-    required this.isEditable,
-    this.email,
-    required this.recieveEmailNotifications,
-    required this.employeeCode,
-    this.userTypeCode,
-    this.defaultMenuCode,
-    this.maxStorageSize,
-    required this.securityLevel,
-    required this.isFirstLogin,
-    required this.employeeCodeNavigation,
-    this.userTypeCodeNavigation,
-  });
-  late final int securityUserCode;
-  late final int securityGroupCode;
-  late final String userName;
-  late final String password;
-  late final bool isActive;
-  late final bool isAdmin;
-  late final String lang;
-  late final String skin;
-  late final String name;
-  late final String arabicName;
-  late final bool isEditable;
-  late final Null email;
-  late final bool recieveEmailNotifications;
-  late final int employeeCode;
-  late final Null userTypeCode;
-  late final Null defaultMenuCode;
-  late final Null maxStorageSize;
-  late final int securityLevel;
-  late final bool isFirstLogin;
-  late final EmployeeCodeNavigation employeeCodeNavigation;
-  late final Null userTypeCodeNavigation;
-
-  ModifiedByNavigation.fromJson(Map<String, dynamic> json){
-    securityUserCode = json['securityUserCode'];
-    securityGroupCode = json['securityGroupCode'];
-    userName = json['userName'];
-    password = json['password'];
-    isActive = json['isActive'];
-    isAdmin = json['isAdmin'];
-    lang = json['lang'];
-    skin = json['skin'];
-    name = json['name'];
-    arabicName = json['arabic_Name'];
-    isEditable = json['isEditable'];
-    email = null;
-    recieveEmailNotifications = json['recieveEmailNotifications'];
-    employeeCode = json['employeeCode'];
-    userTypeCode = null;
-    defaultMenuCode = null;
-    maxStorageSize = null;
-    securityLevel = json['securityLevel'];
-    isFirstLogin = json['isFirstLogin'];
-    employeeCodeNavigation = EmployeeCodeNavigation.fromJson(json['employeeCodeNavigation']);
-    userTypeCodeNavigation = null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['securityUserCode'] = securityUserCode;
-    _data['securityGroupCode'] = securityGroupCode;
-    _data['userName'] = userName;
-    _data['password'] = password;
-    _data['isActive'] = isActive;
-    _data['isAdmin'] = isAdmin;
-    _data['lang'] = lang;
-    _data['skin'] = skin;
-    _data['name'] = name;
-    _data['arabic_Name'] = arabicName;
-    _data['isEditable'] = isEditable;
-    _data['email'] = email;
-    _data['recieveEmailNotifications'] = recieveEmailNotifications;
-    _data['employeeCode'] = employeeCode;
-    _data['userTypeCode'] = userTypeCode;
-    _data['defaultMenuCode'] = defaultMenuCode;
-    _data['maxStorageSize'] = maxStorageSize;
-    _data['securityLevel'] = securityLevel;
-    _data['isFirstLogin'] = isFirstLogin;
-    _data['employeeCodeNavigation'] = employeeCodeNavigation.toJson();
-    _data['userTypeCodeNavigation'] = userTypeCodeNavigation;
     return _data;
   }
 }
@@ -952,7 +758,7 @@ class UserCodeNavigation {
   late final Null maxStorageSize;
   late final int securityLevel;
   late final bool isFirstLogin;
-  late final EmployeeCodeNavigation? employeeCodeNavigation;
+  late final Null employeeCodeNavigation;
   late final Null userTypeCodeNavigation;
 
   UserCodeNavigation.fromJson(Map<String, dynamic> json){
@@ -1094,13 +900,13 @@ class VehicleTypeCodeNavigation {
   late final int vehicleTypeCode;
   late final String name;
   late final String arabicName;
-  late final List<VehiclesRequestNavigation> vehiclesRequestNavigation;
+  late final List<dynamic> vehiclesRequestNavigation;
 
   VehicleTypeCodeNavigation.fromJson(Map<String, dynamic> json){
     vehicleTypeCode = json['vehicleTypeCode'];
     name = json['name'];
     arabicName = json['arabic_Name'];
-    vehiclesRequestNavigation = List.from(json['vehiclesRequestNavigation']).map((e)=>VehiclesRequestNavigation.fromJson(e)).toList();
+    vehiclesRequestNavigation = List.castFrom<dynamic, dynamic>(json['vehiclesRequestNavigation']);
   }
 
   Map<String, dynamic> toJson() {
@@ -1108,365 +914,7 @@ class VehicleTypeCodeNavigation {
     _data['vehicleTypeCode'] = vehicleTypeCode;
     _data['name'] = name;
     _data['arabic_Name'] = arabicName;
-    _data['vehiclesRequestNavigation'] = vehiclesRequestNavigation.map((e)=>e.toJson()).toList();
-    return _data;
-  }
-}
-
-class VehiclesRequestNavigation {
-  VehiclesRequestNavigation({
-    required this.masterRequestCode,
-    required this.requestFromTime,
-    required this.requestToTime,
-    required this.isFullDay,
-    required this.directionCode,
-    required this.vehicleTypeCode,
-    this.vehicleCost,
-    required this.directionCodeNavigation,
-    required this.masterRequestCodeNavigation,
-  });
-  late final int masterRequestCode;
-  late final String requestFromTime;
-  late final String requestToTime;
-  late final bool isFullDay;
-  late final int directionCode;
-  late final int vehicleTypeCode;
-  late final Null vehicleCost;
-  late final DirectionCodeNavigation directionCodeNavigation;
-  late final MasterRequestCodeNavigation masterRequestCodeNavigation;
-
-  VehiclesRequestNavigation.fromJson(Map<String, dynamic> json){
-    masterRequestCode = json['masterRequestCode'];
-    requestFromTime = json['requestFromTime'];
-    requestToTime = json['requestToTime'];
-    isFullDay = json['isFullDay'];
-    directionCode = json['directionCode'];
-    vehicleTypeCode = json['vehicleTypeCode'];
-    vehicleCost = null;
-    directionCodeNavigation = DirectionCodeNavigation.fromJson(json['directionCodeNavigation']);
-    masterRequestCodeNavigation = MasterRequestCodeNavigation.fromJson(json['masterRequestCodeNavigation']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['masterRequestCode'] = masterRequestCode;
-    _data['requestFromTime'] = requestFromTime;
-    _data['requestToTime'] = requestToTime;
-    _data['isFullDay'] = isFullDay;
-    _data['directionCode'] = directionCode;
-    _data['vehicleTypeCode'] = vehicleTypeCode;
-    _data['vehicleCost'] = vehicleCost;
-    _data['directionCodeNavigation'] = directionCodeNavigation.toJson();
-    _data['masterRequestCodeNavigation'] = masterRequestCodeNavigation.toJson();
-    return _data;
-  }
-}
-
-class MasterRequestCodeNavigation {
-  MasterRequestCodeNavigation({
-    required this.masterRequestCode,
-    this.masterRequestNo,
-    required this.requestTypeCode,
-    required this.trackCode,
-    required this.requestDate,
-    required this.requestDateHijri,
-    required this.mainType,
-    required this.departmentApproval,
-    this.notes,
-    this.canceled,
-    this.cancelRequestNumber,
-    required this.createdBy,
-    required this.creationDate,
-    required this.creationDateHijri,
-    this.modifiedBy,
-    this.modificationDate,
-    this.modificationDateHijri,
-    required this.employeeCode,
-    this.fileName,
-    this.filebase64,
-    required this.isFromMobile,
-    required this.isApplyDuplicate,
-    required this.isEdit,
-    this.addByName,
-    this.employeeName,
-    this.departmentApprovalName,
-    required this.haveAnyApproval,
-    this.userPendingName,
-    this.createdByUser,
-    required this.trackCanceledExist,
-    this.createdByNavigation,
-    required this.employeeCodeNavigation,
-    this.modifiedByNavigation,
-    this.requestTypeCodeNavigation,
-    this.trackCodeNavigation,
-    required this.wfRequestStatus,
-    this.academicAward,
-    this.academicCoExtraCurricularActivity,
-    this.academicCommittee,
-    this.academicPgsupervision,
-    this.academicProfessionalDevelopmentCommunityService,
-    this.academicPublication,
-    this.academicResearchProfile,
-    this.academicScientificActivity,
-    this.academicSponser,
-    this.academicStructInstCapBuildExpansion,
-    this.changeSectionDepartRequest,
-    this.medicalInsuranceRequest,
-    required this.wfMasterRequestsSignatures,
-    this.newSectionDepartRequest,
-    this.scholarshipRequest,
-    this.printBusinessCardRequest,
-    this.backToWorkRequest,
-    this.parentRequestNavigation,
-    this.introductionletterRequest,
-    this.medicalInquiryRequest,
-    this.reimbursementRequest,
-    required this.changeEmployeeDataRequest,
-    required this.wfMasterRequestsFiles,
-    this.bonusesRequestNavigations,
-    required this.timeSheetRequestDetail,
-    this.purchasesRequest,
-    this.conslidatedPurchasesRequest,
-    this.maintenancesRequestNavigations,
-    this.generalsRequestNavigations,
-    this.residenceRequestNavigations,
-    this.transferRequestNavigations,
-    required this.wfMasterRequestsConditionNaviagtions,
-    this.financialPaymentHrRequestNavigations,
-    this.financialPaymentRequestNavigations,
-    this.newJobRequestNavigations,
-    this.trackTypeCode,
-    this.subContractGroupCode,
-    this.assignmentCode,
-  });
-  late final int masterRequestCode;
-  late final int? masterRequestNo;
-  late final int requestTypeCode;
-  late final int trackCode;
-  late final String requestDate;
-  late final String requestDateHijri;
-  late final int mainType;
-  late final int departmentApproval;
-  late final String? notes;
-  late final Null canceled;
-  late final Null cancelRequestNumber;
-  late final int createdBy;
-  late final String creationDate;
-  late final String creationDateHijri;
-  late final int? modifiedBy;
-  late final String? modificationDate;
-  late final String? modificationDateHijri;
-  late final int employeeCode;
-  late final Null fileName;
-  late final Null filebase64;
-  late final bool isFromMobile;
-  late final bool isApplyDuplicate;
-  late final bool isEdit;
-  late final Null addByName;
-  late final Null employeeName;
-  late final Null departmentApprovalName;
-  late final bool haveAnyApproval;
-  late final Null userPendingName;
-  late final Null createdByUser;
-  late final bool trackCanceledExist;
-  late final CreatedByNavigation? createdByNavigation;
-  late final EmployeeCodeNavigation employeeCodeNavigation;
-  late final ModifiedByNavigation? modifiedByNavigation;
-  late final Null requestTypeCodeNavigation;
-  late final Null trackCodeNavigation;
-  late final WfRequestStatus wfRequestStatus;
-  late final Null academicAward;
-  late final Null academicCoExtraCurricularActivity;
-  late final Null academicCommittee;
-  late final Null academicPgsupervision;
-  late final Null academicProfessionalDevelopmentCommunityService;
-  late final Null academicPublication;
-  late final Null academicResearchProfile;
-  late final Null academicScientificActivity;
-  late final Null academicSponser;
-  late final Null academicStructInstCapBuildExpansion;
-  late final Null changeSectionDepartRequest;
-  late final Null medicalInsuranceRequest;
-  late final List<WfMasterRequestsSignatures> wfMasterRequestsSignatures;
-  late final Null newSectionDepartRequest;
-  late final Null scholarshipRequest;
-  late final Null printBusinessCardRequest;
-  late final Null backToWorkRequest;
-  late final Null parentRequestNavigation;
-  late final Null introductionletterRequest;
-  late final Null medicalInquiryRequest;
-  late final Null reimbursementRequest;
-  late final List<dynamic> changeEmployeeDataRequest;
-  late final List<dynamic> wfMasterRequestsFiles;
-  late final Null bonusesRequestNavigations;
-  late final List<dynamic> timeSheetRequestDetail;
-  late final Null purchasesRequest;
-  late final Null conslidatedPurchasesRequest;
-  late final Null maintenancesRequestNavigations;
-  late final Null generalsRequestNavigations;
-  late final Null residenceRequestNavigations;
-  late final Null transferRequestNavigations;
-  late final List<dynamic> wfMasterRequestsConditionNaviagtions;
-  late final Null financialPaymentHrRequestNavigations;
-  late final Null financialPaymentRequestNavigations;
-  late final Null newJobRequestNavigations;
-  late final Null trackTypeCode;
-  late final Null subContractGroupCode;
-  late final Null assignmentCode;
-
-  MasterRequestCodeNavigation.fromJson(Map<String, dynamic> json){
-    masterRequestCode = json['masterRequestCode'];
-    masterRequestNo = null;
-    requestTypeCode = json['requestTypeCode'];
-    trackCode = json['trackCode'];
-    requestDate = json['requestDate'];
-    requestDateHijri = json['requestDateHijri'];
-    mainType = json['mainType'];
-    departmentApproval = json['departmentApproval'];
-    notes = null;
-    canceled = null;
-    cancelRequestNumber = null;
-    createdBy = json['createdBy'];
-    creationDate = json['creationDate'];
-    creationDateHijri = json['creationDateHijri'];
-    modifiedBy = null;
-    modificationDate = null;
-    modificationDateHijri = null;
-    employeeCode = json['employeeCode'];
-    fileName = null;
-    filebase64 = null;
-    isFromMobile = json['isFromMobile'];
-    isApplyDuplicate = json['isApplyDuplicate'];
-    isEdit = json['isEdit'];
-    addByName = null;
-    employeeName = null;
-    departmentApprovalName = null;
-    haveAnyApproval = json['haveAnyApproval'];
-    userPendingName = null;
-    createdByUser = null;
-    trackCanceledExist = json['trackCanceledExist'];
-    createdByNavigation = null;
-    employeeCodeNavigation = EmployeeCodeNavigation.fromJson(json['employeeCodeNavigation']);
-    modifiedByNavigation = null;
-    requestTypeCodeNavigation = null;
-    trackCodeNavigation = null;
-    wfRequestStatus = WfRequestStatus.fromJson(json['wfRequestStatus']);
-    academicAward = null;
-    academicCoExtraCurricularActivity = null;
-    academicCommittee = null;
-    academicPgsupervision = null;
-    academicProfessionalDevelopmentCommunityService = null;
-    academicPublication = null;
-    academicResearchProfile = null;
-    academicScientificActivity = null;
-    academicSponser = null;
-    academicStructInstCapBuildExpansion = null;
-    changeSectionDepartRequest = null;
-    medicalInsuranceRequest = null;
-    wfMasterRequestsSignatures = List.from(json['wfMasterRequestsSignatures']).map((e)=>WfMasterRequestsSignatures.fromJson(e)).toList();
-    newSectionDepartRequest = null;
-    scholarshipRequest = null;
-    printBusinessCardRequest = null;
-    backToWorkRequest = null;
-    parentRequestNavigation = null;
-    introductionletterRequest = null;
-    medicalInquiryRequest = null;
-    reimbursementRequest = null;
-    changeEmployeeDataRequest = List.castFrom<dynamic, dynamic>(json['changeEmployeeDataRequest']);
-    wfMasterRequestsFiles = List.castFrom<dynamic, dynamic>(json['wfMasterRequestsFiles']);
-    bonusesRequestNavigations = null;
-    timeSheetRequestDetail = List.castFrom<dynamic, dynamic>(json['timeSheetRequestDetail']);
-    purchasesRequest = null;
-    conslidatedPurchasesRequest = null;
-    maintenancesRequestNavigations = null;
-    generalsRequestNavigations = null;
-    residenceRequestNavigations = null;
-    transferRequestNavigations = null;
-    wfMasterRequestsConditionNaviagtions = List.castFrom<dynamic, dynamic>(json['wfMasterRequestsConditionNaviagtions']);
-    financialPaymentHrRequestNavigations = null;
-    financialPaymentRequestNavigations = null;
-    newJobRequestNavigations = null;
-    trackTypeCode = null;
-    subContractGroupCode = null;
-    assignmentCode = null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['masterRequestCode'] = masterRequestCode;
-    _data['masterRequestNo'] = masterRequestNo;
-    _data['requestTypeCode'] = requestTypeCode;
-    _data['trackCode'] = trackCode;
-    _data['requestDate'] = requestDate;
-    _data['requestDateHijri'] = requestDateHijri;
-    _data['mainType'] = mainType;
-    _data['departmentApproval'] = departmentApproval;
-    _data['notes'] = notes;
-    _data['canceled'] = canceled;
-    _data['cancelRequestNumber'] = cancelRequestNumber;
-    _data['createdBy'] = createdBy;
-    _data['creationDate'] = creationDate;
-    _data['creationDateHijri'] = creationDateHijri;
-    _data['modifiedBy'] = modifiedBy;
-    _data['modificationDate'] = modificationDate;
-    _data['modificationDateHijri'] = modificationDateHijri;
-    _data['employeeCode'] = employeeCode;
-    _data['fileName'] = fileName;
-    _data['filebase64'] = filebase64;
-    _data['isFromMobile'] = isFromMobile;
-    _data['isApplyDuplicate'] = isApplyDuplicate;
-    _data['isEdit'] = isEdit;
-    _data['addByName'] = addByName;
-    _data['employeeName'] = employeeName;
-    _data['departmentApprovalName'] = departmentApprovalName;
-    _data['haveAnyApproval'] = haveAnyApproval;
-    _data['userPendingName'] = userPendingName;
-    _data['createdByUser'] = createdByUser;
-    _data['trackCanceledExist'] = trackCanceledExist;
-    _data['createdByNavigation'] = createdByNavigation;
-    _data['employeeCodeNavigation'] = employeeCodeNavigation.toJson();
-    _data['modifiedByNavigation'] = modifiedByNavigation;
-    _data['requestTypeCodeNavigation'] = requestTypeCodeNavigation;
-    _data['trackCodeNavigation'] = trackCodeNavigation;
-    _data['wfRequestStatus'] = wfRequestStatus.toJson();
-    _data['academicAward'] = academicAward;
-    _data['academicCoExtraCurricularActivity'] = academicCoExtraCurricularActivity;
-    _data['academicCommittee'] = academicCommittee;
-    _data['academicPgsupervision'] = academicPgsupervision;
-    _data['academicProfessionalDevelopmentCommunityService'] = academicProfessionalDevelopmentCommunityService;
-    _data['academicPublication'] = academicPublication;
-    _data['academicResearchProfile'] = academicResearchProfile;
-    _data['academicScientificActivity'] = academicScientificActivity;
-    _data['academicSponser'] = academicSponser;
-    _data['academicStructInstCapBuildExpansion'] = academicStructInstCapBuildExpansion;
-    _data['changeSectionDepartRequest'] = changeSectionDepartRequest;
-    _data['medicalInsuranceRequest'] = medicalInsuranceRequest;
-    _data['wfMasterRequestsSignatures'] = wfMasterRequestsSignatures.map((e)=>e.toJson()).toList();
-    _data['newSectionDepartRequest'] = newSectionDepartRequest;
-    _data['scholarshipRequest'] = scholarshipRequest;
-    _data['printBusinessCardRequest'] = printBusinessCardRequest;
-    _data['backToWorkRequest'] = backToWorkRequest;
-    _data['parentRequestNavigation'] = parentRequestNavigation;
-    _data['introductionletterRequest'] = introductionletterRequest;
-    _data['medicalInquiryRequest'] = medicalInquiryRequest;
-    _data['reimbursementRequest'] = reimbursementRequest;
-    _data['changeEmployeeDataRequest'] = changeEmployeeDataRequest;
-    _data['wfMasterRequestsFiles'] = wfMasterRequestsFiles;
-    _data['bonusesRequestNavigations'] = bonusesRequestNavigations;
-    _data['timeSheetRequestDetail'] = timeSheetRequestDetail;
-    _data['purchasesRequest'] = purchasesRequest;
-    _data['conslidatedPurchasesRequest'] = conslidatedPurchasesRequest;
-    _data['maintenancesRequestNavigations'] = maintenancesRequestNavigations;
-    _data['generalsRequestNavigations'] = generalsRequestNavigations;
-    _data['residenceRequestNavigations'] = residenceRequestNavigations;
-    _data['transferRequestNavigations'] = transferRequestNavigations;
-    _data['wfMasterRequestsConditionNaviagtions'] = wfMasterRequestsConditionNaviagtions;
-    _data['financialPaymentHrRequestNavigations'] = financialPaymentHrRequestNavigations;
-    _data['financialPaymentRequestNavigations'] = financialPaymentRequestNavigations;
-    _data['newJobRequestNavigations'] = newJobRequestNavigations;
-    _data['trackTypeCode'] = trackTypeCode;
-    _data['subContractGroupCode'] = subContractGroupCode;
-    _data['assignmentCode'] = assignmentCode;
+    _data['vehiclesRequestNavigation'] = vehiclesRequestNavigation;
     return _data;
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/comment/space.dart';
 import '../../../src/app_colors.dart';
 class LogoCustom extends StatelessWidget {
-  const LogoCustom({Key? key,this.textDescription,this.textTitle,this.width=150,this.height=120}) : super(key: key);
+  const LogoCustom({Key? key,this.textDescription,this.textTitle,this.width=300,this.height=300}) : super(key: key);
 final String? textTitle;
 final String? textDescription;
 final double? height;
@@ -15,10 +15,10 @@ final double? width;
     return  Column(
       children: [
         Image.asset(
-          'assets/images/logo.png',
+          'assets/images/login.png',
           alignment: Alignment.center,
-          width: width,
-          height: height,
+          width: 300,
+          height: 300,
         ),
         Text(textTitle!,
             style: TextStyle(

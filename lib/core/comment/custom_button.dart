@@ -12,12 +12,13 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(text),
+      child: Text(text,style: TextStyle(fontSize: 25)),
       style: ElevatedButton.styleFrom(
           primary: AppColors.kPrimaryRedColor,
-          minimumSize: Size.fromHeight(37),
+          minimumSize: Size.fromHeight(70),
           fixedSize: Size(90, 37),
           shadowColor: Colors.black,
+          shape: StadiumBorder(),
           elevation: 5),
       onPressed: onPress,
     );

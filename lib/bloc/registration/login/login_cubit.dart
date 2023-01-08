@@ -15,11 +15,11 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(context) => BlocProvider.of(context);
   LoginModel? loginModel;
 
-  userLogin(String userName, String password) {
+  userLogin(String userName, String password) async{
 
     emit(LoginGetLoadingState());
 
-    DioHelper.loginData(
+    await  DioHelper.loginData(
         url: 'Login',
         query: {'userName': userName, 'password': password}).then((value) async {
       print(value.data);

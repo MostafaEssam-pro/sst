@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Scaffold(
             body: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(top: 10),
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       child: LogoCustom(
                         width: 100,
-                        height: SizeConfig.defaultSize! * 12,
+                        height: SizeConfig.defaultSize! * 10,
                         textTitle: 'welcome back',
                         textDescription: 'Please login to your account',
                       )),
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         children: [
                           TextFieldCustom(
-                              text: 'Your Email',
+                              text: 'User Name',
                               InputType: TextInputType.text,
                               validatorField: (value) => validate(value),
                               icon: Icons.person,
@@ -143,56 +143,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                 }),
                             if(state is LoginGetLoadingState)
-                              LinearProgressIndicator(),
-                            VerticalSpace(value: 1),
-                            SizedBox(
-                              height: 90,
-                              width: 90,
-                              child: IconButton(
-                                icon: new Icon(Icons.fingerprint, size: 90),
-                                onPressed: () {},
+                              LinearProgressIndicator(
+                                backgroundColor: Color(0xFF9e1f62),
+                                minHeight: 10,
                               ),
-                            ),
-                            VerticalSpace(value: 0.2),
-                            CustomText(
-                              text: '   FingerPrint',
-                            ),
+
                           ],
                         )),
                   ),
-                  VerticalSpace(value: 2),
-                  Container(
-                    height: SizeConfig.defaultSize! * 7,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomBtnocialMedia(
-                            imagesName: 'assets/icons/facebook.png',
-                            onPress: () => {}),
-                        const HorizontalSpace(value: 3),
-                        CustomBtnocialMedia(
-                            imagesName: 'assets/icons/twitter.png',
-                            onPress: () => {}),
-                        const HorizontalSpace(value: 3),
-                        CustomBtnocialMedia(
-                            imagesName: 'assets/icons/google.png',
-                            onPress: () => {}),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: SizeConfig.defaultSize! * 13,
-                    child: Column(
-                      children: [
-                        const VerticalSpace(value: 2),
-                        Text('Dont have account? ',
-                            style: TextStyle(
-                                fontSize: 15, color: AppColors.kGrayColor)),
-                        VerticalSpace(value: 3),
 
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),

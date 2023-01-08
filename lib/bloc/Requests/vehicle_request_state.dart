@@ -4,3 +4,7 @@ part of 'vehicle_request_cubit.dart';
 abstract class VehicleRequestState {}
 
 class VehicleRequestInitial extends VehicleRequestState {}
+
+class VehicleRequestGetSuccessState extends VehicleRequestState {}
+class VehicleRequestGetLoadingState extends VehicleRequestState {}
+class VehicleRequestGetErrorState extends VehicleRequestState {}

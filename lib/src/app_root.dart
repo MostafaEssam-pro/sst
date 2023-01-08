@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sst/bloc/Requests/vehicle_request_cubit.dart';
 
 import '../bloc/registration/login/login_cubit.dart';
 
@@ -15,9 +15,8 @@ class AppRoot extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return MultiBlocProvider(
       providers: [
-
         BlocProvider(create: (BuildContext context) => LoginCubit()),
-
+        BlocProvider(create: (BuildContext context) => VehicleRequestCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,16 +29,17 @@ class AppRoot extends StatelessWidget {
         ],
         theme: ThemeData(
             brightness: Brightness.light,
-
+            colorScheme: ThemeData().colorScheme.copyWith(
+                  primary: Colors.grey,
+                  surface: Colors.yellow,
+                ),
             // this makes status bar text color black
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.kPrimaryRedColor,
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: AppBarTheme(
               systemOverlayStyle: SystemUiOverlayStyle(
-
                 statusBarColor: Colors.white,
                 statusBarBrightness: Brightness.light,
-
               ),
               titleTextStyle: TextStyle(),
               backgroundColor: Colors.white,
